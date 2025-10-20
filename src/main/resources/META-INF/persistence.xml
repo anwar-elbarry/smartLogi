@@ -13,7 +13,7 @@
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/smartlogi_db"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
-            <property name="jakarta.persistence.jdbc.password" value="your_password"/>
+            <property name="jakarta.persistence.jdbc.password" value="Jppp5734"/>
 
             <!-- Hibernate options -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
