@@ -8,6 +8,8 @@
     <persistence-unit name="smartlogiPU" transaction-type="RESOURCE_LOCAL">
 
         <!-- Entity classes -->
+        <class>com.exemple.smartLogi.model.Livreur</class>
+        <class>com.exemple.smartLogi.model.Colis</class>
         <!-- Database connection -->
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
