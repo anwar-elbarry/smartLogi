@@ -28,7 +28,7 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="persistenceUnitName" value="smartlogiPU"/>
-        <property name="packagesToScan" value="com.exemple.smartLogi.models"/>
+        <property name="packagesToScan" value="com.exemple.smartLogi.model"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
