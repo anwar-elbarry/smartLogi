@@ -48,4 +48,13 @@
 
     <tx:annotation-driven/>
 
+
+    <bean id="colisService" class="com.exemple.smartLogi.service.coli.ColisServiceImpl">
+        <property name="coliRepository" ref="coliRepository"/>
+    </bean>
+
+    <bean id="livreurService" class="com.exemple.smartLogi.service.livreur.LivreurServiceImpl">
+      <constructor-arg name="livreurRepository" ref="livreurRepository"/>
+    </bean>
+
 </beans>
