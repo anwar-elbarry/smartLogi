@@ -14,25 +14,21 @@ public class LivreurServiceImpl implements LivreurService{
     }
 
     @Override
-    @Transactional
     public Livreur addLivreur(Livreur livreur) {
        return livreurRepository.save(livreur);
     }
 
     @Override
-    @Transactional
     public Livreur modifier(Livreur livreur) {
 
         return livreurRepository.save(livreur);
     }
 
-    @Transactional
     @Override
     public void supprimer(String id) {
          livreurRepository.deleteById(id);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public Livreur trouverParId(String id)
     {
