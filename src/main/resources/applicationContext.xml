@@ -14,9 +14,12 @@
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <context:component-scan base-package="com.exemple.smartLogi"/>
+    <context:component-scan base-package="com.exemple.smartLogi.controller"/>
     <context:property-placeholder location="classpath:application.properties"/>
 
+
     <jpa:repositories base-package="com.exemple.smartLogi.repository"/>
+
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="${db.driver}"/>
@@ -46,8 +49,11 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
+
     <tx:annotation-driven/>
 
+    <!-- Adapter pour controllers implémentant Controller -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
 
     <bean id="colisService" class="com.exemple.smartLogi.service.coli.ColisServiceImpl">
         <property name="coliRepository" ref="coliRepository"/>
@@ -56,5 +62,24 @@
     <bean id="livreurService" class="com.exemple.smartLogi.service.livreur.LivreurServiceImpl">
       <constructor-arg name="livreurRepository" ref="livreurRepository"/>
     </bean>
+
+
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/colis.htm">colisController</prop>
+                <prop key="/livreur.htm">livreurController</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="livreurController" class="com.exemple.smartLogi.controller.LivreurController" />
+    <bean id="colisController" class="com.exemple.smartLogi.controller.ColisController" >
+        <constructor-arg ref="colisService"/>
+        <property name="livreurService" ref="livreurService"/>
+    </bean>
+
+    <!-- JSON view using Jackson -->
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
 
 </beans>
