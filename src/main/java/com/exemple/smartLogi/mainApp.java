@@ -1,4 +1,6 @@
 package com.exemple.smartLogi;
 
 public class mainApp {
+    public static void main(String[] args) {
+    }
 }
