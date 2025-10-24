@@ -1,5 +1,6 @@
 package com.exemple.smartLogi.service.coli;
 
+import com.exemple.smartLogi.controller.ColisController;
 import com.exemple.smartLogi.model.Colis;
 import com.exemple.smartLogi.repository.ColiRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,10 @@ import java.util.List;
 public class ColisServiceImpl  implements ColisService{
 
     private ColiRepository coliRepository;
+
+    public ColisServiceImpl(ColiRepository coliRepository){
+        this.coliRepository = coliRepository;
+    }
 
     @Override
     public Colis addColis(Colis colis) {
@@ -35,7 +40,4 @@ public class ColisServiceImpl  implements ColisService{
         return coliRepository.findAll();
     }
 
-    public void setColiRepository(ColiRepository coliRepository) {
-        this.coliRepository = coliRepository;
-    }
 }
