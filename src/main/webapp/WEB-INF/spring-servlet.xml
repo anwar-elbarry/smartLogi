@@ -9,8 +9,28 @@
            https://www.springframework.org/schema/context/spring-context.xsd">
 
 
+    <import resource="applicationContext.xml"></import>
 
     <!-- Adapter pour controllers implémentant Controller -->
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
 
+    <context:component-scan base-package="com.exemple.smartLogi.controller"/>
+
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/colis">colisController</prop>
+                <prop key="/livreur">livreurController</prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+
+    <bean id="livreurController" class="com.exemple.smartLogi.controller.LivreurController" />
+    <bean id="colisController" class="com.exemple.smartLogi.controller.ColisController" >
+        <constructor-arg ref="colisService"/>
+        <property name="livreurService" ref="livreurService"/>
+    </bean>
+
+    <!-- JSON view using Jackson -->
 </beans>
